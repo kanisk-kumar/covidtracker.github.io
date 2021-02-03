@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--AOS-->
+       <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+       <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+    <title>Covid Virus Tracker</title>
+    <style type="text/css">
+      *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      .jumbotron{
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url(j1.jpg);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        width: 100%;
+      }
+      figure img{
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body onload="fetch()">
+    <section><nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container">
+    <a class="navbar-brand text-uppercase" href="#">covid-19</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-uppercase" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="#about">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="#live">covid tracker</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</section>
+<section class="" id="">
+    <div class="jumbotron">
+  <h1 class="display-4 text-uppercase text-white pt-5">covid-<span class="text-danger">19</span></h1>
+  <p class="lead text-white">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.</p>
+  <hr class="my-4 text-danger w-25">
+  <p class="text-white">Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment.  Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness</p>
+  <a class="btn btn-outline-danger btn-lg mb-5" href="#" role="button">Learn more</a>
+  </div>
+<section id="about">
+  <div class="container-fluid">
+    <h5 class="display-6 text-uppercase text-danger mt-5">about covid</h5><hr class="text-danger w-25 mb-5">
+    <div class="container">
+    <div class="row">
+      <div class="col-10 col-md-6 col-xl-6 col-xxl-6 mx-auto">
+        <figure class="img-fluid mx-auto"data-aos="slide-up" data-aos-duration="4000" data-aos-offset="300"data-aos-once="true">
+          <img src="j1.jpg">
+        </figure>
+      </div>
+      <div class="col-10 col-md-6 col-xl-6 col-xxl-6 mx-auto">
+        <p data-aos="slide-up" data-aos-duration="4000" data-aos-offset="300"data-aos-once="true">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
+
+Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment.  Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.
+
+The best way to prevent and slow down transmission is to be well informed about the COVID-19 virus, the disease it causes and how it spreads. Protect yourself and others from infection by washing your hands or using an alcohol based rub frequently and not touching your face. 
+
+The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose when an infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette (for example, by coughing into a flexed elbow).</p>
+<button class="btn btn-outline-danger">Read more!</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</section>
+    <section id="live">
+      <div class="container-fluid">
+      <h1 class="display-6 text-uppercase text-danger mt-5">covid-19 live update</h1><hr class="w-25 text-danger mb-5">
+    </div>
+    <div class="container table-responsive">
+    <table class="table table-bordered table-danger table-striped text-center text-uppercase table-hover" id="tbval"data-aos="slide-up" data-aos-duration="4000" data-aos-offset="300"data-aos-once="true">
+      <tr>
+        <th>country</th>
+        <th>total confirmed</th>
+        <th>total recovered</th>
+        <th>total death</th>
+        <th>new confirmed</th>
+        <th>new recovered</th>
+        <th>new death</th>
+      </tr>
+    </table>
+  </div>
+    </section>
+    <!--footer-->
+  <footer class="bg-danger text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center text-white p-3"style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2020 Copyright:
+      <a class="text-white" href="https://kanisk-kumar.github.io/portfolio.github.io/">Made by: Kanishk Kumar</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+    <script type="text/javascript">
+      function fetch() {
+        // body...
+       $.get("https://api.covid19api.com/summary",
+        function (data){
+        console.log(data['Countries'].length)
+        var tbval = document.getElementById('tbval');
+        for (var i = 1; i <=(data['Countries'].length) ; i++) {
+          var x = tbval.insertRow();
+          x.insertCell(0);
+
+          tbval.rows[i].cells[0].innerHTML =data['Countries'][i-1]['Country'];
+
+          x.insertCell(1);
+          tbval.rows[i].cells[1].innerHTML =data['Countries'][i-1]['TotalConfirmed'];
+
+          x.insertCell(2);
+          tbval.rows[i].cells[2].innerHTML =data['Countries'][i-1]['TotalRecovered'];
+
+          x.insertCell(3);
+          tbval.rows[i].cells[3].innerHTML =data['Countries'][i-1]['TotalDeaths'];
+
+          x.insertCell(4);
+          tbval.rows[i].cells[4].innerHTML =data['Countries'][i-1]['NewConfirmed'];
+
+          x.insertCell(5);
+          tbval.rows[i].cells[5].innerHTML =data['Countries'][i-1]['NewRecovered'];
+
+          x.insertCell(6);
+          tbval.rows[i].cells[6].innerHTML =data['Countries'][i-1]['NewDeaths'];
+        }
+       }
+        )
+
+      }
+    </script>
+
+  <!--AOS-->
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript">
+        AOS.init({
+            delay: 100,
+            duration: 400,
+           easing: 'ease'
+        });
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
